@@ -40,6 +40,8 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required',
             'details' => 'required',
+            'price' => 'required',
+            'stock' => 'required',
         ]);
 
         $input = $request->all();
@@ -72,15 +74,23 @@ class ProductController extends Controller
 
         return redirect()->route('product.index')->with('delete', 'Product deleted successfully');
     }
+
+    public function create()
+    {
+        return view('create');
+    }
+
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required',
             'details' => 'required',
+            'price' => 'required',
+            'stock' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $inputs = $request->all();
+        $input = $request->all();
 
         if($image = $request->file('image')) {
             $destinationPath = 'images/';
@@ -89,7 +99,7 @@ class ProductController extends Controller
             $input['image'] = $profileImage;
         }
 
-        Product::create($inputs);
+        Product::create($input);
 
         return redirect()->route('product.index')->with('success', 'Product created successfully');
     }

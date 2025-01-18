@@ -7,7 +7,7 @@
     <div class="flex justify-end items-center mb-6">
         <a href="{{ route('product.index') }}" class="bg-green-500 text-white py-2 px-4 rounded">< Back</a>
     </div>
-    <form action="{{ route('product.store' }}" method="POST" enctype="multipart/form-data" class="bg-white shadow rounded-lg p-6 w-full mx-auto">
+    <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data" class="bg-white shadow rounded-lg p-6 w-full mx-auto">
         @csrf
         
         <!-- Name Field -->
@@ -32,6 +32,28 @@
                 class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Inter Detail"
             ></textarea>
+        </div>
+
+        <div class="mb-4">
+            <label for="price" class="block text-gray-700 font-medium mb-2">Price:</label>
+            <input 
+                type="text" 
+                id="price" 
+                name="price" 
+                class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Inter Price"
+            >
+        </div>
+
+        <div class="mb-4">
+            <label for="stock" class="block text-gray-700 font-medium mb-2">Stock:</label>
+            <input 
+                type="text" 
+                id="stock" 
+                name="stock" 
+                class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Inter Stock"
+            >
         </div>
 
         <!-- File Upload -->
