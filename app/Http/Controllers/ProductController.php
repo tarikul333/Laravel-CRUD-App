@@ -103,13 +103,15 @@ class ProductController extends Controller
 
         return redirect()->route('product.index')->with('success', 'Product created successfully');
     }
-
     public function search(Request $request)
     {
         $query = $request->input('query');
 
-        $products = Product::where('name', 'LIKE', "%($query)%")->orWhere('details', 'LIKE', "%($query)%")->get();
+        $products = Product::where('name', 'like', "$query%")
+                            ->orWhere('details', 'like', "$query%")
+                            ->get();
 
-        return view('index', compact('products'));
+        return view('partials.table', compact('products'));
     }
+
 }

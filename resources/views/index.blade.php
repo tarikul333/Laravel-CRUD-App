@@ -72,25 +72,31 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#search').on('input', function() {
-            // debugger;
-            let query = $(this).val();
-            // console.log(query);
-                $.ajax({
-                url: "{{ route('product.search') }}",
-                method: 'GET',
-                data: { 'query': query },
-                success: function(data) {
-                    $('tbody').html(data);
-                },
-                error: function() {
-                    alert('Search failed.Please try again.');
-                }
-            });
+<script>   
+$(document).ready(function() {
+    $('#search').on('input', function() {
+        let query = $(this).val().trim();
+
+        if (!query) {
+            $('tbody').html('<tr><td colspan="5" class="text-center">No products found.</td></tr>');
+            return;
+        }
+
+        $.ajax({
+            url: "{{ route('product.search') }}",
+            method: 'GET',
+            data: { query: query },
+            success: function(data) {
+                $('tbody').html(data);
+            },
+            error: function(xhr) {
+                console.error(xhr.responseText);
+                alert('Search failed. Please try again.');
+            }
         });
-    })
+    });
+});
+
 </script>
 
 @endsection
