@@ -92,6 +92,9 @@ class ProductController extends Controller
 
         $input = $request->all();
 
+        $randomNumber = rand(10000, 99999);
+        $input['product_id'] = $request->name . '-' . $randomNumber;
+
         if($image = $request->file('image')) {
             $destinationPath = 'images/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
