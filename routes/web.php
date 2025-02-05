@@ -13,6 +13,6 @@ Route::put('products/{product}', [ProductController::class, 'update'])->name('pr
 Route::get('products/create', [ProductController::class, 'create'])->name('product.create');
 Route::post('products', [ProductController::class, 'store'])->name('product.store');
 
-Route::delete('products/{product_id}', [ProductController::class, 'destroy'])->name('product.destroy');
+Route::delete('products/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
 
 Route::get('products/search', [ProductController::class, 'search'])->name('product.search');
