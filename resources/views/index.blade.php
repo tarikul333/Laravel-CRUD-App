@@ -51,9 +51,9 @@
                 <td class="border px-4 py-2 text-center">{{ $product->price }}</td>
                 <td class="border px-4 py-2 text-center">{{ $product->stock }}</td>
                 <td class="border px-4 py-2 space-x-2">
-                    <form action="{{ route('product.destroy', $product->id) }}" method="POST" style="display:inline;">
-                        <a href="{{ route('product.show', $product->id) }}" class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-700">Show</a>
-                        <a href="{{ route('product.edit', $product->id) }}" class="bg-yellow-500 text-white py-1 px-3 rounded hover:bg-yellow-700">Edit</a>
+                    <form action="{{ route('product.destroy', $product->product_id) }}" method="POST" style="display:inline;">
+                        <a href="{{ route('product.show', $product->product_id) }}" class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-700">Show</a>
+                        <a href="{{ route('product.edit', $product->product_id) }}" class="bg-yellow-500 text-white py-1 px-3 rounded hover:bg-yellow-700">Edit</a>
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-700">Delete</button>

@@ -13,7 +13,7 @@ class ProductController extends Controller
         $sortBy = $request->get('sortBy', 'name');
 
         $sortOrder = $request->get('sort', 'asc');
-        if($sortOrder === 'desc') {
+        if ($sortOrder === 'desc') {
             $sortOrder = 'desc';
         } else {
             $sortOrder = 'asc';
@@ -25,13 +25,14 @@ class ProductController extends Controller
     }
     
 
-    public function show(Product $product)
+    public function show($product_id)
     {
+        $product = Product::where('product_id', $product_id)->firstOrFail();
         return view('show', compact('product'));
     }
-
-    public function edit(Product $product)
+    public function edit($product_id)
     {
+        $product = Product::where('product_id', $product_id)->firstOrFail();
         return view('edit', compact('product'));
     }
 
